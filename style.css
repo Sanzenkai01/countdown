@@ -1,0 +1,51 @@
+:root{
+  --bg-1:#071027;
+  --bg-2:#071634;
+  --accent-1:linear-gradient(135deg,#6ee7b7 0%,#60a5fa 100%);
+  --glass:rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+.body-bg{
+  position:fixed;inset:0;z-index:-1;background:#071027;
+}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+  background-image: linear-gradient(rgba(7,10,30,0.64), rgba(7,22,52,0.6)), radial-gradient(800px 400px at 10% 20%, rgba(96,165,250,0.06), transparent 10%), radial-gradient(700px 350px at 90% 80%, rgba(110,231,183,0.05), transparent 10%), url('bg.jpg');
+  background-size: cover, cover, cover, cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color:#e6eef8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+}
+.wrap{width:100%;max-width:920px}
+.card{
+  width:100%;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:16px;
+  padding:32px;
+  box-shadow:0 12px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.04);
+  text-align:center;
+}
+.title{font-size:clamp(1.1rem,2.6vw,1.8rem);margin:0 0 6px;font-weight:700}
+.brand{font-size:clamp(1.2rem,4vw,2.4rem);font-weight:900;letter-spacing:0.06em;margin-bottom:6px;text-transform:uppercase;line-height:1}
+.brand{background:linear-gradient(90deg,#ffd86b,#ff7ab6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 8px 24px rgba(7,10,30,0.6)}
+.subtitle{margin:0;color:rgba(230,238,248,0.8);font-size:0.95rem}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:28px 0}
+.time-box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.value{display:block;font-weight:800;font-size:clamp(1.6rem,6vw,2.6rem);color:#fff;letter-spacing:-0.02em}
+.label{display:block;margin-top:6px;color:rgba(230,238,248,0.7);font-size:0.85rem;text-transform:lowercase}
+.final{font-size:1.05rem;color:#dbeafe;padding-top:6px}
+.meta{margin-top:12px;color:rgba(230,238,248,0.6);font-size:0.82rem}
+.hidden{display:none}
+
+@media (max-width:640px){
+  .countdown{grid-template-columns:repeat(2,1fr)}
+  .card{padding:20px}
+  .value{font-size:clamp(1.4rem,8vw,2.2rem)}
+}
