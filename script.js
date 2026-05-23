@@ -1,37 +1,59 @@
-const target = new Date('2026-05-22T10:00:00-03:00').getTime();
+const startTime = new Date('2026-05-22T10:00:00-03:00').getTime();
+const endTime = new Date('2026-05-24T22:00:00-03:00').getTime();
+const totalDurationSeconds = Math.floor((endTime - startTime) / 1000);
 
-const elDays = document.getElementById('days');
-const elHours = document.getElementById('hours');
-const elMinutes = document.getElementById('minutes');
-const elSeconds = document.getElementById('seconds');
-const elCountdown = document.getElementById('countdown');
+const elapsedDisplay = {
+  hours: document.getElementById('elapsedHours'),
+  minutes: document.getElementById('elapsedMinutes'),
+  seconds: document.getElementById('elapsedSeconds')
+};
+
+const remainingDisplay = {
+  hours: document.getElementById('remainingHours'),
+  minutes: document.getElementById('remainingMinutes'),
+  seconds: document.getElementById('remainingSeconds')
+};
+
 const elFinal = document.getElementById('finalMsg');
+let timer = null;
 
-function pad(n){return String(n).padStart(2,'0')}
+function pad(value) {
+  return String(value).padStart(2, '0');
+}
 
-function update(){
+function render(display, totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  display.hours.textContent = pad(hours);
+  display.minutes.textContent = pad(minutes);
+  display.seconds.textContent = pad(seconds);
+}
+
+function update() {
   const now = Date.now();
-  let diff = Math.floor((target - now) / 1000);
-  if(diff <= 0){
-    elCountdown.classList.add('hidden');
+  let elapsedSeconds = 0;
+  let remainingSeconds = totalDurationSeconds;
+
+  if (now >= endTime) {
+    elapsedSeconds = totalDurationSeconds;
+    remainingSeconds = 0;
     elFinal.classList.remove('hidden');
-    elFinal.textContent = 'Chegou! O beta do Drakantos foi lançado!';
-    clearInterval(timer);
-    return;
+    if (timer) {
+      clearInterval(timer);
+    }
+  } else if (now > startTime) {
+    elapsedSeconds = Math.floor((now - startTime) / 1000);
+    remainingSeconds = Math.max(totalDurationSeconds - elapsedSeconds, 0);
+    elFinal.classList.add('hidden');
+  } else {
+    elFinal.classList.add('hidden');
   }
 
-  const days = Math.floor(diff / 86400);
-  diff %= 86400;
-  const hours = Math.floor(diff / 3600);
-  diff %= 3600;
-  const minutes = Math.floor(diff / 60);
-  const seconds = diff % 60;
-
-  elDays.textContent = days;
-  elHours.textContent = pad(hours);
-  elMinutes.textContent = pad(minutes);
-  elSeconds.textContent = pad(seconds);
+  render(elapsedDisplay, elapsedSeconds);
+  render(remainingDisplay, remainingSeconds);
 }
 
 update();
-const timer = setInterval(update, 1000);
+timer = setInterval(update, 1000);

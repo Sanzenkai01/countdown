@@ -3,36 +3,55 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Contagem Regressiva — 22/05/2026 10:00 (Horário de Brasília)</title>
+    <title>Contador do Beta Teste - 22/05/2026 10:00 ate 24/05/2026 22:00 (Horario de Brasilia)</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <main class="wrap">
       <section class="card" role="region" aria-labelledby="title">
         <div class="brand">Drakantos</div>
-        <h1 id="title" class="title">Contagem regressiva</h1>
-        <p class="subtitle">Contagem regressiva para o lançamento do beta — 22 de maio de 2026, 10:00 (Horário de Brasília)</p>
+        <h1 id="title" class="title">Contador do Beta Teste</h1>
+        <p class="subtitle">Acompanhe quanto tempo ja passou e quanto falta entre 22/05/2026 10:00 e 24/05/2026 22:00 (Horario de Brasilia)</p>
 
-        <div id="countdown" class="countdown" aria-live="polite">
-          <div class="time-box">
-            <span class="value" id="days">0</span>
-            <span class="label">dias</span>
-          </div>
-          <div class="time-box">
-            <span class="value" id="hours">00</span>
-            <span class="label">horas</span>
-          </div>
-          <div class="time-box">
-            <span class="value" id="minutes">00</span>
-            <span class="label">min</span>
-          </div>
-          <div class="time-box">
-            <span class="value" id="seconds">00</span>
-            <span class="label">seg</span>
-          </div>
+        <div class="timers" aria-live="polite">
+          <section class="timer-panel" aria-labelledby="elapsed-title">
+            <h2 id="elapsed-title" class="timer-title">Tempo decorrido</h2>
+            <div class="countdown">
+              <div class="time-box">
+                <span class="value" id="elapsedHours">00</span>
+                <span class="label">horas</span>
+              </div>
+              <div class="time-box">
+                <span class="value" id="elapsedMinutes">00</span>
+                <span class="label">min</span>
+              </div>
+              <div class="time-box">
+                <span class="value" id="elapsedSeconds">00</span>
+                <span class="label">seg</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="timer-panel" aria-labelledby="remaining-title">
+            <h2 id="remaining-title" class="timer-title">Tempo restante</h2>
+            <div class="countdown">
+              <div class="time-box">
+                <span class="value" id="remainingHours">00</span>
+                <span class="label">horas</span>
+              </div>
+              <div class="time-box">
+                <span class="value" id="remainingMinutes">00</span>
+                <span class="label">min</span>
+              </div>
+              <div class="time-box">
+                <span class="value" id="remainingSeconds">00</span>
+                <span class="label">seg</span>
+              </div>
+            </div>
+          </section>
         </div>
 
-        <div id="finalMsg" class="final hidden">Chegou!</div>
+        <div id="finalMsg" class="final hidden">60 horas completas.</div>
         <div class="meta">Timezone: <strong>America/Sao_Paulo</strong></div>
       </section>
     </main>
